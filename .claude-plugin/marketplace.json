@@ -38,13 +38,7 @@
       "name": "material-thinking",
       "source": "./",
       "description": "Comprehensive Material Design 3 (M3) and M3 Expressive guidance for building modern, accessible, and engaging user interfaces. Use when designing or implementing Material Design interfaces, reviewing component designs for M3 compliance, generating design tokens (color schemes, typography, shapes), applying M3 Expressive motion and interactions, or migrating existing UIs to Material 3. Covers all 38 M3 components, foundations (accessibility, layout, interaction), styles (color, typography, elevation, shape, icons, motion), and M3 Expressive tactics for more engaging experiences.",
-      "version": "1.0.0",
-      "author": {
-        "name": "Kurogoma4D",
-        "email": "contact@krgm4d.dev"
-      },
-      "category": "design",
-      "keywords": ["material-design", "Material Design", "m3", "ui", "design-system", "accessibility", "flutter"],
+      "strict": false,
       "skills": ["./skills/material-thinking"]
     }
   ]
