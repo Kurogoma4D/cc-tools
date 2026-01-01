@@ -1,9 +1,9 @@
 ---
-name: material-design
+name: material-thinking
 description: Comprehensive Material Design 3 (M3) and M3 Expressive guidance for building modern, accessible, and engaging user interfaces. Use when designing or implementing Material Design interfaces, reviewing component designs for M3 compliance, generating design tokens (color schemes, typography, shapes), applying M3 Expressive motion and interactions, or migrating existing UIs to Material 3. Covers all 38 M3 components, foundations (accessibility, layout, interaction), styles (color, typography, elevation, shape, icons, motion), and M3 Expressive tactics for more engaging experiences.
 ---
 
-# Material Design
+# Material Thinking
 
 Apply Material Design 3 and M3 Expressive principles to create accessible, consistent, and engaging user interfaces.
 
@@ -179,16 +179,16 @@ When adding expressive elements to enhance engagement:
 
 ### When to Read Each Reference
 
-| Your Question | Read This |
-|--------------|-----------|
-| "What components should I use for navigation?" | `references/components.md` → Navigation Components |
-| "How do I create a color scheme?" | `references/styles.md` → Color |
-| "What are the responsive breakpoints?" | `references/foundations.md` → Layout → Window Size Classes |
-| "How do I make my design more engaging?" | `references/m3-expressive.md` |
-| "What's the correct button hierarchy?" | `references/components.md` → Action Components → Buttons |
-| "How do I ensure accessibility?" | `references/foundations.md` → Accessibility |
-| "What motion timing should I use?" | `references/styles.md` → Motion |
-| "How do I implement shape morphing?" | `references/m3-expressive.md` → Shape and Form |
+| Your Question                                  | Read This                                                  |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| "What components should I use for navigation?" | `references/components.md` → Navigation Components         |
+| "How do I create a color scheme?"              | `references/styles.md` → Color                             |
+| "What are the responsive breakpoints?"         | `references/foundations.md` → Layout → Window Size Classes |
+| "How do I make my design more engaging?"       | `references/m3-expressive.md`                              |
+| "What's the correct button hierarchy?"         | `references/components.md` → Action Components → Buttons   |
+| "How do I ensure accessibility?"               | `references/foundations.md` → Accessibility                |
+| "What motion timing should I use?"             | `references/styles.md` → Motion                            |
+| "How do I implement shape morphing?"           | `references/m3-expressive.md` → Shape and Form             |
 
 ### Component Quick Selector
 
