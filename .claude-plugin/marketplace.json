@@ -1,0 +1,38 @@
+{
+  "name": "cc-tools",
+  "owner": {
+    "name": "Kurogoma4D",
+    "email": "contact@krgm4d.dev"
+  },
+  "metadata": {
+    "description": "Kurogoma4D作成のClaude Code用の便利なツール集及び実験場",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "mermaid-escape-hook",
+      "source": "./hooks",
+      "description": "Markdown内のMermaid図表で特殊文字を自動エスケープするフック",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kurogoma4D",
+        "email": "contact@krgm4d.dev"
+      },
+      "category": "formatting",
+      "keywords": ["mermaid", "markdown", "escape", "formatting"],
+      "hooks": {
+        "PostToolUse": [
+          {
+            "matcher": "Edit|MultiEdit|Write",
+            "hooks": [
+              {
+                "type": "command",
+                "command": "${CLAUDE_PLUGIN_ROOT}/escape_mermaid_hook.sh"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

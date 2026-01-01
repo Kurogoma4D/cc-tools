@@ -28,6 +28,20 @@ Markdownファイル内のMermaid図表で特殊文字を自動エスケープ�
 
 ## 使用方法
 
+### プラグインマーケットプレイスから利用（推奨）
+
+1. Claude Codeでマーケットプレイスを追加
+   ```bash
+   /plugin marketplace add kurogoma4d/cc-tools
+   ```
+
+2. プラグインをインストール
+   ```bash
+   /plugin install mermaid-escape-hook@cc-tools
+   ```
+
+### 手動インストール
+
 1. このリポジトリを `.claude` ディレクトリにコピー
    1. settings.jsonはマージする形で、必要なツールの設定を抽出して自身のファイルに追記する
 2. Claude Codeが設定を自動読み込み
