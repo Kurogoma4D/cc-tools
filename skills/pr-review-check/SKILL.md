@@ -8,9 +8,12 @@ description: Check Pull Request on current branch, and obtain unresolved review 
 ## Get PR Number
 ```bash
 PR_NUMBER=$(gh pr view --json number --jq '.number')
+OWNER=$(gh repo view --json owner --jq '.owner.login')
+REPO=$(gh repo view --json name --jq '.name')
 ```
 
 ## Fetch Unresolved Review Comments
+
 ```bash
 gh api graphql -f query='
   query($owner: String!, $repo: String!, $number: Int!) {
@@ -32,6 +35,6 @@ gh api graphql -f query='
       }
     }
   }
-' -f owner='{owner}' -f repo='{repo}' -F number="$PR_NUMBER" \
+' -f owner="$OWNER" -f repo="$REPO" -F number="$PR_NUMBER" \
   | jq '.data.repository.pullRequest.reviewThreads.nodes | map(select(.isResolved == false))'
 ```
