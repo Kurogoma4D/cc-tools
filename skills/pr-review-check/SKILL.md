@@ -1,6 +1,6 @@
 ---
 name: pr-review-check
-description: Check Pull Request on current branch, and obtain unresolved review comments. `gh` command is required.
+description: Check Pull Request on current branch, and obtain unresolved review comments. `gh` command is required. Use this when user instructed with `PR review comment` `PR レビューコメント` etc.
 ---
 
 # Get Unresolved Review Comments for Current Branch's PR
