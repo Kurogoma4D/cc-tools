@@ -5,36 +5,35 @@ description: Check Pull Request on current branch, and obtain unresolved review 
 
 # Get Unresolved Review Comments for Current Branch's PR
 
-## Get PR Number
 ```bash
-PR_NUMBER=$(gh pr view --json number --jq '.number')
-OWNER=$(gh repo view --json owner --jq '.owner.login')
-REPO=$(gh repo view --json name --jq '.name')
-```
-
-## Fetch Unresolved Review Comments
-
-```bash
-gh api graphql -f query='
-  query($owner: String!, $repo: String!, $number: Int!) {
-    repository(owner: $owner, name: $repo) {
-      pullRequest(number: $number) {
-        reviewThreads(first: 100) {
-          nodes {
-            isResolved
-            comments(first: 10) {
-              nodes {
-                body
-                author { login }
-                path
-                line
-              }
+# Save query to a temp file
+cat > /tmp/query.graphql << 'EOF'
+query($owner: String!, $repo: String!, $number: Int!) {
+  repository(owner: $owner, name: $repo) {
+    pullRequest(number: $number) {
+      reviewThreads(first: 100) {
+        nodes {
+          isResolved
+          comments(first: 10) {
+            nodes {
+              body
+              author { login }
+              path
+              line
             }
           }
         }
       }
     }
   }
-' -f owner="$OWNER" -f repo="$REPO" -F number="$PR_NUMBER" \
+}
+EOF
+
+# Execute
+gh api graphql \
+  -f query="$(cat /tmp/query.graphql)" \
+  -f owner="$(gh repo view --json owner --jq '.owner.login')" \
+  -f repo="$(gh repo view --json name --jq '.name')" \
+  -F number="$(gh pr view --json number --jq '.number')" \
   | jq '.data.repository.pullRequest.reviewThreads.nodes | map(select(.isResolved == false))'
 ```
