@@ -1,68 +1,68 @@
-# デザインシステム構築方法論
+# Design System Methodology
 
-Material Designの原理原則に基づき、プロジェクト固有のデザインシステムを設計・構築するための方法論。
+A methodology for designing and building project-specific design systems based on Material Design principles.
 
 ## Table of Contents
 
-1. [デザインシステムのレイヤー構造](#デザインシステムのレイヤー構造)
-2. [トークンアーキテクチャ設計](#トークンアーキテクチャ設計)
-3. [コンポーネント設計原則](#コンポーネント設計原則)
-4. [パターン体系化](#パターン体系化)
-5. [ガバナンスと進化](#ガバナンスと進化)
+1. [Design System Layer Structure](#design-system-layer-structure)
+2. [Token Architecture Design](#token-architecture-design)
+3. [Component Design Principles](#component-design-principles)
+4. [Pattern Organization](#pattern-organization)
+5. [Governance and Evolution](#governance-and-evolution)
 
 ---
 
-## デザインシステムのレイヤー構造
+## Design System Layer Structure
 
-デザインシステムは4つのレイヤーで構成される。下層ほど安定し、上層ほどプロジェクト固有の表現が強くなる。
+A design system consists of four layers. Lower layers are more stable; upper layers carry stronger project-specific expression.
 
-### Layer 1: 原理原則（Principles）
+### Layer 1: Principles
 
-変わらない設計哲学。プロジェクトを超えて適用される。
+Unchanging design philosophy. Applied across projects.
 
-- 視覚的階層: サイズ・色・余白で情報の優先度を表現する
-- アフォーダンス: 操作可能な要素はそれと分かる見た目にする
-- フィードバック: ユーザーの操作に対して即座に応答する
-- 一貫性: 同じ意味には同じ表現を使う
-- アクセシビリティ: 多様な能力を持つユーザーが利用できる
+- Visual hierarchy: Express information priority through size, color, and spacing
+- Affordance: Make interactive elements look interactive
+- Feedback: Respond immediately to user actions
+- Consistency: Use the same expression for the same meaning
+- Accessibility: Enable use by people with diverse abilities
 
-### Layer 2: デザイントークン（Tokens）
+### Layer 2: Design Tokens
 
-原則をプロジェクト固有の値に変換する。色・形・間隔・動きの数値体系。
+Convert principles into project-specific values. Numeric systems for color, shape, spacing, and motion.
 
-- ブランドカラーからカラースキームを導出する
-- タイポグラフィスケールを定義する
-- シェイプ（角丸）スケールを定義する
-- スペーシングスケールを定義する
-- モーション（イージング・デュレーション）を定義する
+- Derive color schemes from brand colors
+- Define typography scales
+- Define shape (corner radius) scales
+- Define spacing scales
+- Define motion (easing, duration) values
 
-### Layer 3: コンポーネントパターン（Patterns）
+### Layer 3: Component Patterns
 
-トークンを用いて構築する再利用可能なUIパターン。Materialの既定コンポーネントに縛られず、プロジェクトの要求に応じて設計する。
+Reusable UI patterns built with tokens. Design them to match project requirements, not bound by Material's predefined components.
 
-- 操作パターン: ボタン、トグル、入力
-- 情報表示パターン: カード、リスト、ステータス表示
-- ナビゲーションパターン: 画面遷移、タブ、階層移動
-- フィードバックパターン: 通知、確認、進捗
+- Action patterns: buttons, toggles, inputs
+- Information display patterns: cards, lists, status displays
+- Navigation patterns: screen transitions, tabs, hierarchy traversal
+- Feedback patterns: notifications, confirmations, progress
 
-### Layer 4: 画面構成（Compositions）
+### Layer 4: Compositions
 
-パターンを組み合わせた具体的な画面レイアウト。プロジェクトのユースケースに直結する。
+Concrete screen layouts combining patterns. Directly tied to project use cases.
 
 ---
 
-## トークンアーキテクチャ設計
+## Token Architecture Design
 
-### トークンの3階層
+### Three Tiers of Tokens
 
 ```
 Reference Tokens → System Tokens → Component Tokens
-（生の値）       （意味を持つ値）  （用途に紐づく値）
+(raw values)       (semantic values)  (usage-bound values)
 ```
 
 #### Reference Tokens
 
-色のパレットやフォントサイズなど、意味を持たない生の値。
+Raw values without semantic meaning, such as color palettes and font sizes.
 
 ```
 blue-500: #2196F3
@@ -73,7 +73,7 @@ radius-12: 12px
 
 #### System Tokens
 
-プロジェクトの意味体系に沿った名前を付ける。Reference Tokensを参照する。
+Named according to the project's semantic system. Reference the Reference Tokens.
 
 ```
 color-primary: {blue-500}
@@ -84,7 +84,7 @@ shape-medium: {radius-12}
 
 #### Component Tokens
 
-特定のUIパターンに紐づく値。System Tokensを参照する。
+Values bound to specific UI patterns. Reference the System Tokens.
 
 ```
 button-bg: {color-primary}
@@ -93,243 +93,243 @@ card-bg: {color-surface}
 card-radius: {shape-medium}
 ```
 
-### カラートークン設計手順
+### Color Token Design Steps
 
-1. ブランドカラーをソースカラーとして設定する
-2. ソースカラーからトーナルパレット（明度の段階）を生成する
-3. 役割（primary, secondary, tertiary, surface, error）にトーンを割り当てる
-4. ライトテーマとダークテーマの両方を定義する
-5. セマンティックカラー（成功、警告、情報）を追加する
+1. Set brand colors as source colors
+2. Generate tonal palettes (lightness steps) from source colors
+3. Assign tones to roles (primary, secondary, tertiary, surface, error)
+4. Define both light and dark themes
+5. Add semantic colors (success, warning, info)
 
-### タイポグラフィトークン設計手順
+### Typography Token Design Steps
 
-1. プロジェクトのブランドフォントを選定する
-2. 用途ロール（display, headline, title, body, label）を定義する
-3. 各ロールのサイズ・ウェイト・行間・字間を設定する
-4. レスポンシブスケーリングのルールを定める
+1. Select the project's brand font
+2. Define usage roles (display, headline, title, body, label)
+3. Set size, weight, line height, and letter spacing for each role
+4. Establish responsive scaling rules
 
-### シェイプトークン設計手順
+### Shape Token Design Steps
 
-1. ブランドの性格に合うシェイプスケールを定義する（角丸の段階）
-2. 要素のサイズと重要度にシェイプを割り当てるルールを決める
-3. シェイプの意味を明確にする（角丸が大きいほどフレンドリー、など）
+1. Define a shape scale matching the brand's character (corner radius steps)
+2. Establish rules for assigning shapes based on element size and importance
+3. Clarify shape semantics (e.g., larger corner radius = friendlier)
 
-### スペーシングトークン設計手順
+### Spacing Token Design Steps
 
-1. ベースユニットを決める（4dp推奨）
-2. スケールを定義する（4, 8, 12, 16, 24, 32, 48, 64...）
-3. 用途別の命名規則を設ける（inset, stack, inline, section）
+1. Set a base unit (4dp recommended)
+2. Define a scale (4, 8, 12, 16, 24, 32, 48, 64...)
+3. Establish naming conventions by usage (inset, stack, inline, section)
 
-### モーショントークン設計手順
+### Motion Token Design Steps
 
-1. デュレーションスケールを定義する（short, medium, long）
-2. イージングカーブを選定する（emphasized, standard）
-3. プロジェクトの性格に合わせてカスタマイズする
-4. `prefers-reduced-motion`対応のフォールバックを定義する
+1. Define a duration scale (short, medium, long)
+2. Select easing curves (emphasized, standard)
+3. Customize to match the project's character
+4. Define `prefers-reduced-motion` fallbacks
 
 ---
 
-## コンポーネント設計原則
+## Component Design Principles
 
-Materialの既定コンポーネントをそのまま使うのではなく、以下の原則に従ってプロジェクト固有のコンポーネントを設計する。
+Rather than using Material's predefined components as-is, design project-specific components following these principles.
 
-### 原則1: 役割ベースの設計
+### Principle 1: Role-Based Design
 
-コンポーネントは見た目ではなく役割で定義する。
+Define components by role, not appearance.
 
-**問い**
-- このコンポーネントはどんなユーザー行動を支援するか
-- 画面上でどの程度の注意を引くべきか（強調度）
-- 他のコンポーネントとどのような関係にあるか
+**Questions to ask:**
+- What user behavior does this component support?
+- How much attention should it draw on screen? (emphasis level)
+- What is its relationship to other components?
 
-**強調度の体系**
+**Emphasis Hierarchy**
 
-コンポーネントの強調度を3段階で整理する。
+Organize component emphasis into three levels:
 
-| 強調度 | 視覚的特徴 | 使用場面 |
-|--------|-----------|---------|
-| High | 塗りつぶし、高コントラスト | 画面の主要アクション |
-| Medium | 線、中間色 | 補助的なアクション |
-| Low | テキストのみ、低コントラスト | 三次的なアクション |
+| Emphasis | Visual Characteristics | Usage |
+|----------|----------------------|-------|
+| High | Filled, high contrast | Primary action on screen |
+| Medium | Outlined, mid-tone | Secondary actions |
+| Low | Text only, low contrast | Tertiary actions |
 
-### 原則2: 状態の明示
+### Principle 2: Explicit States
 
-すべてのインタラクティブ要素に状態体系を定義する。
+Define a state system for every interactive element.
 
-**必須状態**
-- Default: 通常の状態
-- Hover: ポインタが乗った状態（デスクトップ）
-- Focused: キーボードフォーカス
-- Pressed: 押下中
-- Disabled: 無効
+**Required states:**
+- Default: Normal state
+- Hover: Pointer over the element (desktop)
+- Focused: Keyboard focus
+- Pressed: Being pressed
+- Disabled: Inactive
 
-**状態レイヤーの実装**
+**State Layer Implementation**
 
-半透明オーバーレイで状態を表現する。これにより任意の背景色のコンポーネントに統一的な状態表現を適用できる。
+Express states through semi-transparent overlays. This applies unified state expression to components on any background color.
 
 ```
-Hover: 主色 8% opacity
-Focus: 主色 12% opacity
-Press: 主色 12% opacity
-Drag: 主色 16% opacity
+Hover: primary color at 8% opacity
+Focus: primary color at 12% opacity
+Press: primary color at 12% opacity
+Drag: primary color at 16% opacity
 ```
 
-### 原則3: コンテナ思考
+### Principle 3: Container Thinking
 
-コンポーネントを独立したコンテナとして設計する。
+Design components as self-contained containers.
 
-**コンテナの構成要素**
-- 背景（Surface）: 色、エレベーション
-- 境界（Boundary）: 線、角丸
-- 内部余白（Padding）: スペーシングトークンを使用
-- コンテンツスロット: 可変なコンテンツ領域
+**Container composition:**
+- Background (Surface): color, elevation
+- Boundary: stroke, corner radius
+- Inner padding: use spacing tokens
+- Content slots: variable content areas
 
-**エレベーションの使い分け**
-- 重なり順を表現する
-- 注意の優先度を示す
-- 影とサーフェスティントの2手法を使い分ける
+**Elevation usage:**
+- Express stacking order
+- Indicate attention priority
+- Use shadow and surface tint as two distinct techniques
 
-### 原則4: レスポンシブ適応
+### Principle 4: Responsive Adaptation
 
-ウィンドウサイズに応じてコンポーネントの振る舞いを変える。
+Change component behavior according to window size.
 
-**適応のレベル**
-- リフロー: 要素の配置変更（横並び→縦並び）
-- リサイズ: 要素のサイズ変更
-- 表示/非表示: 要素の出し入れ
-- 変換: 別のパターンへの切り替え（ボトムナビ→サイドナビ）
+**Levels of adaptation:**
+- Reflow: Rearrange elements (horizontal → vertical)
+- Resize: Change element dimensions
+- Show/Hide: Toggle element visibility
+- Transform: Switch to a different pattern (bottom nav → side nav)
 
-### 原則5: アクセシビリティファースト
+### Principle 5: Accessibility First
 
-コンポーネント設計の初期段階からアクセシビリティを組み込む。
+Incorporate accessibility from the earliest stage of component design.
 
-- 最小タッチターゲット: 48×48dp
-- カラーコントラスト: WCAG 2.1 Level AA以上
-- キーボード操作: すべてのインタラクションがキーボードで完結する
-- スクリーンリーダー: 適切なセマンティクスとラベル
-- テキストリサイズ: 200%まで対応
-
----
-
-## パターン体系化
-
-### パターンカタログの構築方法
-
-プロジェクトのUIを分析し、繰り返し現れるパターンを抽出・体系化する。
-
-#### Step 1: UIインベントリ
-
-既存の画面・プロトタイプからすべてのUI要素を収集する。
-
-- スクリーンショットの収集
-- 要素の分類（操作、表示、ナビゲーション、フィードバック）
-- 重複と不整合の特定
-
-#### Step 2: パターン抽出
-
-類似する要素をグルーピングし、パターンとして抽象化する。
-
-- 同じ役割を持つ要素を統合する
-- バリエーション（サイズ、強調度）を整理する
-- 命名規則を統一する
-
-#### Step 3: パターン定義
-
-各パターンに以下を定義する。
-
-- 目的: 何のために存在するか
-- 構造: どのような要素で構成されるか
-- トークンマッピング: どのデザイントークンを使うか
-- バリエーション: どのようなバリエーションがあるか
-- 使用ガイドライン: どの場面で使い、どの場面で使わないか
-
-#### Step 4: パターン間の関係定義
-
-パターン同士の関係を整理する。
-
-- 代替関係: 同じ目的の別パターン（使い分け基準を明記）
-- 構成関係: あるパターンが別のパターンを含む
-- 排他関係: 同時に使うべきでないパターン
-
-### ナビゲーション体系の設計
-
-画面サイズとコンテンツ構造に応じてナビゲーションパターンを選定する。
-
-**設計の問い**
-- アプリのトップレベルの目的地はいくつあるか
-- 階層の深さはどの程度か
-- ユーザーはどのデバイスを主に使うか
-- コンテンツの構造は平坦か階層的か
-
-**ウィンドウサイズ別の検討**
-
-| サイズ | 検討すべきパターン |
-|--------|------------------|
-| Compact (<600dp) | 画面下部ナビゲーション、タブ |
-| Medium (600-840dp) | サイドレール、折りたたみパネル |
-| Expanded (>840dp) | サイドドロワー、マルチペイン |
-
-### レイアウト体系の設計
-
-**カノニカルレイアウト**
-
-よく使われるレイアウトパターンを定義し、プロジェクト全体で統一する。
-
-- 一覧→詳細: マスターリストと詳細ペインの構成
-- フィード: スクロール可能なコンテンツストリーム
-- 補助パネル: メインコンテンツ+補足情報
-
-**グリッドシステム**
-- カラム数をウィンドウサイズごとに定義する
-- ガター幅を統一する
-- マージン規則を設ける
+- Minimum touch target: 48×48dp
+- Color contrast: WCAG 2.1 Level AA or above
+- Keyboard operation: All interactions completable via keyboard
+- Screen reader: Appropriate semantics and labels
+- Text resizing: Support up to 200%
 
 ---
 
-## ガバナンスと進化
+## Pattern Organization
 
-### デザインシステムの運用
+### How to Build a Pattern Catalog
 
-#### 変更管理
+Analyze the project's UI and extract recurring patterns into a systematic catalog.
 
-- トークンの変更は全プロダクトに波及するため、慎重に行う
-- セマンティックバージョニングでトークンとパターンを管理する
-- 破壊的変更にはマイグレーションガイドを用意する
+#### Step 1: UI Inventory
 
-#### 品質基準
+Collect all UI elements from existing screens or prototypes.
 
-新しいパターンをシステムに追加する際の基準を設ける。
+- Collect screenshots
+- Classify elements (action, display, navigation, feedback)
+- Identify duplicates and inconsistencies
 
-- 3つ以上の画面で使用される（再利用性）
-- トークンのみで構成される（一貫性）
-- アクセシビリティ要件を満たす
-- レスポンシブ対応が完了している
+#### Step 2: Pattern Extraction
 
-#### 監査プロセス
+Group similar elements and abstract them into patterns.
 
-定期的にプロダクトとデザインシステムの整合性を確認する。
+- Consolidate elements with the same role
+- Organize variations (size, emphasis level)
+- Unify naming conventions
 
-- プロダクトのUIがトークンとパターンに準拠しているか
-- 未定義のスタイルやパターンが増えていないか
-- 不要になったパターンがないか
+#### Step 3: Pattern Definition
 
-### デザインシステムの拡張
+Define the following for each pattern:
 
-#### 新パターン追加のフロー
+- Purpose: Why it exists
+- Structure: What elements compose it
+- Token mapping: Which design tokens it uses
+- Variations: What variations exist
+- Usage guidelines: When to use and when not to use
 
-1. プロダクト要求から必要性を確認する
-2. 既存パターンで代替できないか検討する
-3. 原則に基づいて設計する（役割、状態、コンテナ、レスポンシブ、アクセシビリティ）
-4. トークンマッピングを定義する
-5. ドキュメントと使用ガイドラインを作成する
-6. レビューと承認を経て追加する
+#### Step 4: Define Inter-Pattern Relationships
 
-#### トークン拡張のフロー
+Organize relationships between patterns.
 
-1. 既存トークンで表現できない値が3回以上現れたら検討する
-2. System Tokenとして追加するか、Component Tokenとして局所化するか判断する
-3. 命名規則に従って追加する
-4. 既存のComponent Tokensへの影響を確認する
+- Alternative: Different patterns for the same purpose (state usage criteria clearly)
+- Compositional: One pattern contains another
+- Exclusive: Patterns that should not be used together
+
+### Navigation System Design
+
+Select navigation patterns based on screen size and content structure.
+
+**Design questions:**
+- How many top-level destinations does the app have?
+- How deep is the hierarchy?
+- What devices do users primarily use?
+- Is the content structure flat or hierarchical?
+
+**Considerations by window size:**
+
+| Size | Patterns to consider |
+|------|---------------------|
+| Compact (<600dp) | Bottom navigation, tabs |
+| Medium (600-840dp) | Side rail, collapsible panel |
+| Expanded (>840dp) | Side drawer, multi-pane |
+
+### Layout System Design
+
+**Canonical Layouts**
+
+Define commonly used layout patterns and unify them across the project.
+
+- List-detail: Master list and detail pane composition
+- Feed: Scrollable content stream
+- Supporting pane: Main content + supplementary information
+
+**Grid System**
+- Define column count per window size
+- Unify gutter width
+- Establish margin rules
+
+---
+
+## Governance and Evolution
+
+### Operating a Design System
+
+#### Change Management
+
+- Token changes propagate across all products, so apply them carefully
+- Manage tokens and patterns with semantic versioning
+- Provide migration guides for breaking changes
+
+#### Quality Criteria
+
+Set criteria for adding new patterns to the system.
+
+- Used in 3 or more screens (reusability)
+- Composed entirely of tokens (consistency)
+- Meets accessibility requirements
+- Responsive adaptation is complete
+
+#### Audit Process
+
+Periodically verify alignment between the product and design system.
+
+- Does the product UI comply with tokens and patterns?
+- Are undefined styles or patterns increasing?
+- Are there patterns that are no longer needed?
+
+### Extending the Design System
+
+#### Flow for Adding New Patterns
+
+1. Confirm necessity from product requirements
+2. Consider whether existing patterns can substitute
+3. Design based on principles (role, state, container, responsive, accessibility)
+4. Define token mapping
+5. Create documentation and usage guidelines
+6. Add after review and approval
+
+#### Flow for Extending Tokens
+
+1. Consider adding when a value not expressible by existing tokens appears 3 or more times
+2. Decide whether to add as a System Token or localize as a Component Token
+3. Add following naming conventions
+4. Check impact on existing Component Tokens
 
 ---
 

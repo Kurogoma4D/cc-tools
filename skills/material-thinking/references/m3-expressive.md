@@ -1,6 +1,6 @@
 # Material 3 Expressive
 
-M3 Expressiveは、Googleが2024-2025年に導入したMaterial 3の進化版で、より魅力的で感情的に共鳴するインターフェースを実現します。
+M3 Expressive is an evolution of Material 3 introduced by Google in 2024-2025, enabling more engaging and emotionally resonant interfaces.
 
 ## Table of Contents
 
@@ -17,21 +17,21 @@ M3 Expressiveは、Googleが2024-2025年に導入したMaterial 3の進化版で
 
 ### What is M3 Expressive?
 
-M3 Expressiveは、標準のMaterial 3を拡張し、以下を実現します:
+M3 Expressive extends standard Material 3 to achieve:
 
-- **Engaging**: ユーザーの注意を引き、関心を維持
-- **Emotionally resonant**: 感情的なつながりを生む
-- **User-friendly**: 使いやすさを犠牲にしない
-- **Brand expression**: ブランドの個性を表現
+- **Engaging**: Captures and sustains user attention
+- **Emotionally resonant**: Creates emotional connections
+- **User-friendly**: Does not sacrifice usability
+- **Brand expression**: Expresses brand personality
 
 ### Key Differences from Standard M3
 
 | Aspect | Standard M3 | M3 Expressive |
 |--------|-------------|---------------|
-| Motion | 控えめ、機能的 | 大胆、表現豊か |
-| Shapes | 一貫した角丸 | 動的な形状変形 |
-| Emphasis | 明確、シンプル | ドラマチック、インパクト |
-| Timing | 速い（200-300ms） | やや長め（400-700ms） |
+| Motion | Restrained, functional | Bold, expressive |
+| Shapes | Consistent corner radius | Dynamic shape morphing |
+| Emphasis | Clear, simple | Dramatic, impactful |
+| Timing | Fast (200-300ms) | Slightly longer (400-700ms) |
 
 URL: https://m3.material.io/blog/building-with-m3-expressive
 
@@ -41,25 +41,25 @@ URL: https://m3.material.io/blog/building-with-m3-expressive
 
 ### Creating Engaging Products
 
-M3 Expressiveは、以下のusability原則に基づきます:
+M3 Expressive is grounded in these usability principles:
 
 #### 1. Guide Users
-ユーザーを適切に誘導する:
-- **Motion paths**: アニメーションでフローを示す
-- **Visual hierarchy**: 動きで注意を引く
-- **Staged reveal**: 段階的に情報を開示
+Guide users appropriately:
+- **Motion paths**: Show flow through animation
+- **Visual hierarchy**: Draw attention through movement
+- **Staged reveal**: Disclose information progressively
 
 #### 2. Emphasize Actions
-重要なアクションを強調:
-- **Scale changes**: サイズ変化で重要性を示す
-- **Color dynamics**: 色の変化で状態を表現
-- **Focused attention**: 1つの要素に注意を集中
+Highlight important actions:
+- **Scale changes**: Indicate importance through size changes
+- **Color dynamics**: Express state through color changes
+- **Focused attention**: Concentrate attention on one element
 
 #### 3. Provide Feedback
-ユーザーのアクションに対する明確なフィードバック:
-- **Immediate response**: 即座の視覚的反応
-- **State transitions**: 状態変化を明確に表現
-- **Completion signals**: アクション完了を示す
+Clear feedback for user actions:
+- **Immediate response**: Instant visual reaction
+- **State transitions**: Clearly express state changes
+- **Completion signals**: Indicate action completion
 
 URL: https://m3.material.io/foundations/usability/overview
 
@@ -67,13 +67,13 @@ URL: https://m3.material.io/foundations/usability/overview
 
 ## Design Tactics
 
-M3 Expressiveを実装するための具体的なデザイン戦術。
+Specific design tactics for implementing M3 Expressive.
 
 URL: https://m3.material.io/foundations/usability/applying-m-3-expressive
 
 ### 1. Emphasized Easing
 
-**Standard easing**よりも劇的な**Emphasized easing**を使用:
+Use **Emphasized easing** for more dramatic effect than Standard easing:
 
 ```
 Emphasized Decelerate: cubic-bezier(0.05, 0.7, 0.1, 1.0)
@@ -81,9 +81,9 @@ Emphasized Accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15)
 ```
 
 **When to use:**
-- 重要なトランジション
-- ユーザーの注意を引く必要がある場合
-- ブランド表現を強化したい場合
+- Important transitions
+- When you need to capture user attention
+- When enhancing brand expression
 
 **Example:**
 ```css
@@ -94,7 +94,7 @@ Emphasized Accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15)
 
 ### 2. Extended Duration
 
-標準より長いアニメーション時間:
+Longer animation times than standard:
 
 | Element | Standard | Expressive |
 |---------|----------|------------|
@@ -102,32 +102,32 @@ Emphasized Accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15)
 | Medium changes | 250ms | 400-500ms |
 | Large transitions | 300ms | 500-700ms |
 
-**Caution:** 1000msを超えないこと
+**Caution:** Do not exceed 1000ms.
 
 ### 3. Exaggerated Scale
 
-スケール変化を誇張:
+Amplify scale changes:
 
 **Standard:**
-- Scale: 1.0 → 1.05（+5%）
+- Scale: 1.0 → 1.05 (+5%)
 
 **Expressive:**
-- Scale: 1.0 → 1.15（+15%）
-- Scale: 1.0 → 0.9 → 1.1（bounce effect）
+- Scale: 1.0 → 1.15 (+15%)
+- Scale: 1.0 → 0.9 → 1.1 (bounce effect)
 
-**Example use case:**
-- FABのタップアニメーション
-- カードの選択状態
-- アイコンのアクティブ状態
+**Example use cases:**
+- FAB tap animation
+- Card selection state
+- Icon active state
 
 ### 4. Dynamic Color Transitions
 
-色の動的な変化:
+Dynamic color changes:
 
 **Techniques:**
-- Gradient animations: グラデーションの動的変化
-- Color pulse: 色のパルス効果
-- Hue rotation: 色相の変化
+- Gradient animations: Dynamic gradient changes
+- Color pulse: Color pulse effect
+- Hue rotation: Hue shifts
 
 **Example:**
 ```css
@@ -139,12 +139,12 @@ Emphasized Accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15)
 
 ### 5. Layered Motion
 
-複数の要素が異なるタイミングで動く:
+Multiple elements moving at different timings:
 
 **Stagger animations:**
-- 遅延: 50-100ms per item
-- リストアイテムの順次表示
-- カードグリッドの表示
+- Delay: 50-100ms per item
+- Sequential display of list items
+- Card grid reveals
 
 **Example timing:**
 ```
@@ -156,19 +156,19 @@ Item 4: 240ms
 
 ### 6. Shape Morphing
 
-形状の動的な変形（後述）
+Dynamic shape transformation (detailed below).
 
 ---
 
 ## Expressive Motion
 
-M3 Expressiveの中核となるモーションシステム。
+The core motion system of M3 Expressive.
 
 URL: https://m3.material.io/blog/m3-expressive-motion-theming
 
 ### Motion Theming System
 
-カスタマイズ可能な新しいモーションテーマシステム:
+A new customizable motion theme system:
 
 #### Motion Tokens
 
@@ -199,21 +199,21 @@ motion.easing.standard: cubic-bezier(0.2, 0.0, 0, 1.0)
 **Expressive container transform:**
 - Duration: 500ms
 - Easing: emphasized
-- 追加効果: 軽いスケール変化、色の変化
+- Additional effects: subtle scale changes, color shifts
 
 #### 2. Shared Axis (Enhanced)
 
 **Expressive enhancements:**
-- より大きいスライド距離（+20%）
-- フェード+スケール効果の組み合わせ
-- ステージングされた要素の動き
+- Larger slide distance (+20%)
+- Combined fade + scale effects
+- Staged element movement
 
 #### 3. Morph Transition
 
-新しいトランジションタイプ:
-- 形状の滑らかな変形
-- 複数プロパティの同時変化（サイズ、色、形状）
-- 有機的な動き
+A new transition type:
+- Smooth shape deformation
+- Simultaneous changes to multiple properties (size, color, shape)
+- Organic movement
 
 **Example:**
 ```
@@ -223,7 +223,7 @@ Circle → Rounded Rectangle → Full Screen
 
 ### Micro-interactions
 
-小さいが印象的なインタラクション:
+Small but impactful interactions:
 
 #### Button Press
 ```
@@ -251,13 +251,13 @@ Circle → Rounded Rectangle → Full Screen
 
 ### Shape Morph
 
-動的な形状変形でブランド表現を強化。
+Enhance brand expression through dynamic shape transformation.
 
 URL: https://m3.material.io/styles/shape/shape-morph
 
 #### Basic Shape Morph
 
-形状の滑らかな変化:
+Smooth shape transitions:
 
 **Example scenarios:**
 1. **FAB → Dialog**
@@ -271,14 +271,14 @@ URL: https://m3.material.io/styles/shape/shape-morph
 
 3. **Button → Full Width**
    - Fixed width → Full screen width
-   - Corner radius維持
+   - Corner radius maintained
 
 #### Advanced Techniques
 
 **Path morphing:**
-- SVGパスの変形
-- ベジェ曲線の補間
-- 複雑な形状間の遷移
+- SVG path deformation
+- Bezier curve interpolation
+- Transitions between complex shapes
 
 **Example SVG morph:**
 ```svg
@@ -292,17 +292,17 @@ URL: https://m3.material.io/styles/shape/shape-morph
 
 ### Organic Shapes
 
-より自然で有機的な形状:
+More natural, organic forms:
 
 **Characteristics:**
-- 非対称な角丸
-- 流動的なライン
-- 自然界からのインスピレーション
+- Asymmetric corner radii
+- Fluid lines
+- Inspiration from nature
 
 **Use cases:**
-- ブランド要素
-- ヒーローセクション
-- イラストレーション
+- Brand elements
+- Hero sections
+- Illustrations
 
 ---
 
@@ -310,38 +310,38 @@ URL: https://m3.material.io/styles/shape/shape-morph
 
 ### When to Use M3 Expressive
 
-#### Good Use Cases ✓
-- **Consumer apps**: エンターテイメント、ソーシャル、ゲーム
-- **Brand-forward products**: ブランド表現が重要
-- **Engagement-critical flows**: オンボーディング、チュートリアル
-- **Hero moments**: 重要なマイルストーン、達成
+#### Good Use Cases
+- **Consumer apps**: Entertainment, social, gaming
+- **Brand-forward products**: Where brand expression matters
+- **Engagement-critical flows**: Onboarding, tutorials
+- **Hero moments**: Key milestones, achievements
 
-#### Use with Caution ⚠
-- **Productivity apps**: 過度なアニメーションは避ける
-- **Frequent actions**: 繰り返し使用される操作
-- **Data-heavy interfaces**: 情報が優先される場合
+#### Use with Caution
+- **Productivity apps**: Avoid excessive animation
+- **Frequent actions**: Repeatedly used operations
+- **Data-heavy interfaces**: Where information takes priority
 
-#### Avoid ✗
-- **Accessibility concerns**: 動きに敏感なユーザー
-- **Performance-constrained**: 低スペックデバイス
-- **Critical tasks**: エラーや警告の表示
+#### Avoid
+- **Accessibility concerns**: Motion-sensitive users
+- **Performance-constrained**: Low-spec devices
+- **Critical tasks**: Error and warning displays
 
 ### Balancing Expressiveness and Usability
 
 #### The 80/20 Rule
 
-- **80%**: 標準のM3（速く、機能的）
-- **20%**: M3 Expressive（印象的、ブランド表現）
+- **80%**: Standard M3 (fast, functional)
+- **20%**: M3 Expressive (impactful, brand expression)
 
 **Example distribution:**
-- Standard M3: リスト項目タップ、フォーム入力、設定変更
-- M3 Expressive: 画面遷移、主要アクション（FAB）、初回体験
+- Standard M3: List item taps, form inputs, settings changes
+- M3 Expressive: Screen transitions, primary actions (FAB), first-time experiences
 
 ### Respect User Preferences
 
 #### Reduced Motion
 
-`prefers-reduced-motion`メディアクエリを尊重:
+Respect the `prefers-reduced-motion` media query:
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -354,9 +354,9 @@ URL: https://m3.material.io/styles/shape/shape-morph
 
 #### Accessibility
 
-- **Vestibular disorders**: 大きい動きを避ける
-- **Cognitive load**: 同時に動く要素を制限
-- **Focus management**: アニメーション中もフォーカス可能
+- **Vestibular disorders**: Avoid large movements
+- **Cognitive load**: Limit simultaneously moving elements
+- **Focus management**: Keep elements focusable during animation
 
 ---
 
@@ -438,9 +438,9 @@ const expandCard = (card) => {
 ## Resources and Tools
 
 ### Design Tools
-- **Material Theme Builder**: M3 Expressiveモーションプリセット
+- **Material Theme Builder**: M3 Expressive motion presets
 - **Figma Plugins**: Motion timing visualization
-- **After Effects**: プロトタイプアニメーション
+- **After Effects**: Prototype animations
 
 ### Code Libraries
 - **Web**: Material Web Components (M3 support)

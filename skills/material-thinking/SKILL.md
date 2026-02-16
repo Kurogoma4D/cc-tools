@@ -1,211 +1,211 @@
 ---
 name: material-thinking
-description: Material Designの原理原則に基づき、プロジェクト固有のデザインシステムを構築するための方法論。トークンアーキテクチャ設計、コンポーネント設計原則、パターン体系化、ビジュアルスタイル定義、エクスプレッシブ表現の適用を体系的に行う。UIデザイン・実装の際に、Materialの定義済みコンポーネントに依存せず、プロジェクトの要求に応じたデザインシステムを設計・構築する。
+description: A methodology for building project-level design systems based on Material Design principles. Systematically covers design token architecture, component design principles, pattern organization, visual style definition, and expressive expression. Designs and builds design systems tailored to project requirements without depending on Material's predefined components.
 ---
 
 # Material Thinking
 
-Material Designの原理原則をプロジェクトに適用し、固有のデザインシステムを構築する。
+Apply Material Design principles to build project-specific design systems.
 
-## 前提
+## Premise
 
-Materialの本質はコンポーネントライブラリではなく、設計の原理原則にある。プロジェクトごとにコンテキストが異なるため、表層（コンポーネントの見た目や振る舞い）はカスタマイズが求められる。このスキルは、Materialの原則を方法論として適用し、プロジェクトレベルのデザインシステムを構築することを目的とする。
+The essence of Material is not a component library but design principles. Since context differs across projects, the surface layer (component appearance and behavior) must be customized. This skill applies Material principles as methodology to build project-level design systems.
 
-## リファレンス
+## References
 
-### 1. デザインシステム構築方法論 (`references/design-system-methodology.md`)
+### 1. Design System Methodology (`references/design-system-methodology.md`)
 
-デザインシステムの設計・構築・運用に関する方法論。以下の作業時に参照する。
+Methodology for designing, building, and operating design systems. Refer to when:
 
-- トークンアーキテクチャ（Reference → System → Component）の設計
-- コンポーネント設計原則（役割ベース設計、状態体系、コンテナ思考）
-- パターンの抽出・体系化
-- デザインシステムのガバナンスと拡張
+- Designing token architecture (Reference → System → Component)
+- Applying component design principles (role-based design, state systems, container thinking)
+- Extracting and organizing patterns
+- Governing and extending design systems
 
-### 2. 基盤原則 (`references/foundations.md`)
+### 2. Foundations (`references/foundations.md`)
 
-すべてのUIに適用されるMaterialの基盤原則。以下の作業時に参照する。
+Material's foundational principles applied to all UIs. Refer to when:
 
-- アクセシビリティ要件の確認
-- レイアウトとレスポンシブ設計（ウィンドウサイズクラス、カノニカルレイアウト）
-- インタラクションパターン（状態、ジェスチャー、選択）
-- コンテンツデザインとUXライティング
+- Checking accessibility requirements
+- Designing layout and responsive behavior (window size classes, canonical layouts)
+- Defining interaction patterns (states, gestures, selection)
+- Writing content design and UX copy
 
-### 3. ビジュアルスタイル (`references/styles.md`)
+### 3. Visual Styles (`references/styles.md`)
 
-視覚言語を構成する要素の定義。以下の作業時に参照する。
+Elements that compose the visual language. Refer to when:
 
-- カラーシステム（トーナルパレット、カラーロール、ダイナミックカラー）
-- タイポグラフィ（タイプスケール、フォント）
-- エレベーションとシェイプ
-- アイコンとモーション
+- Designing color systems (tonal palettes, color roles, dynamic color)
+- Defining typography (type scale, fonts)
+- Working with elevation and shape
+- Selecting icons and designing motion
 
-### 4. エクスプレッシブ表現 (`references/m3-expressive.md`)
+### 4. Expressive Expression (`references/m3-expressive.md`)
 
-より表現豊かなUIを実現するための手法。以下の作業時に参照する。
+Techniques for creating more expressive UIs. Refer to when:
 
-- エクスプレッシブモーション
-- シェイプモーフィング
-- ブランド表現の強化
-- 表現と使いやすさのバランス
+- Applying expressive motion
+- Implementing shape morphing
+- Enhancing brand expression
+- Balancing expressiveness with usability
 
-## ワークフロー
+## Workflows
 
-### Workflow 1: プロジェクトのデザインシステムを新規構築する
+### Workflow 1: Build a New Project Design System
 
-新しいプロジェクトでデザインシステムをゼロから構築する場合。
+When building a design system from scratch for a new project.
 
-#### 1. 設計原則を定義する
+#### 1. Define design principles
 
-プロジェクト固有の設計原則を策定する。Materialの原則（視覚的階層、アフォーダンス、フィードバック、一貫性、アクセシビリティ）をベースに、プロジェクトの目的とブランドに合わせてカスタマイズする。
+Establish project-specific design principles. Customize Material's principles (visual hierarchy, affordance, feedback, consistency, accessibility) to match the project's purpose and brand.
 
-- `references/foundations.md` を参照する
-- `references/design-system-methodology.md` → Layer 1 を参照する
+- Refer to `references/foundations.md`
+- Refer to `references/design-system-methodology.md` → Layer 1
 
-#### 2. トークンアーキテクチャを設計する
+#### 2. Design token architecture
 
-ブランドの視覚的アイデンティティをデザイントークンに変換する。
+Convert the brand's visual identity into design tokens.
 
-- `references/design-system-methodology.md` → トークンアーキテクチャ設計 を参照する
-- `references/styles.md` → 各セクションを参照する
+- Refer to `references/design-system-methodology.md` → Token Architecture Design
+- Refer to `references/styles.md` → each section
 
-手順の要約は以下のとおり。
+Summary of steps:
 
-1. Reference Tokensとして生の値（カラーパレット、フォントサイズ等）を定義する
-2. System Tokensとして意味を持つ名前にマッピングする（primary, surface等）
-3. ライトテーマ・ダークテーマを定義する
-4. タイポグラフィスケール（5ロール × 3サイズ）を定義する
-5. シェイプスケール（角丸の段階）を定義する
-6. スペーシングスケール（4dpベース）を定義する
-7. モーショントークン（デュレーション、イージング）を定義する
+1. Define Reference Tokens as raw values (color palette, font sizes, etc.)
+2. Map to System Tokens with semantic names (primary, surface, etc.)
+3. Define light and dark themes
+4. Define typography scale (5 roles × 3 sizes)
+5. Define shape scale (corner radius steps)
+6. Define spacing scale (4dp base)
+7. Define motion tokens (duration, easing)
 
-#### 3. コンポーネントパターンを設計する
+#### 3. Design component patterns
 
-プロジェクトの要求に基づいてUIパターンを設計する。Materialの既定コンポーネントを前提としない。
+Design UI patterns based on project requirements. Do not assume Material's predefined components.
 
-- `references/design-system-methodology.md` → コンポーネント設計原則 を参照する
+- Refer to `references/design-system-methodology.md` → Component Design Principles
 
-各パターンに以下を定義する。
+Define the following for each pattern:
 
-- 役割と強調度
-- 状態体系（default, hover, focused, pressed, disabled）
-- コンテナ構造（背景、境界、余白、コンテンツスロット）
-- レスポンシブ適応ルール
-- アクセシビリティ要件
+- Role and emphasis level
+- State system (default, hover, focused, pressed, disabled)
+- Container structure (background, boundary, padding, content slots)
+- Responsive adaptation rules
+- Accessibility requirements
 
-#### 4. パターンを体系化する
+#### 4. Organize patterns
 
-設計したパターンをカテゴリ別に整理し、パターン間の関係を定義する。
+Categorize designed patterns and define relationships between them.
 
-- `references/design-system-methodology.md` → パターン体系化 を参照する
+- Refer to `references/design-system-methodology.md` → Pattern Organization
 
-#### 5. エクスプレッシブ表現を検討する（任意）
+#### 5. Consider expressive expression (optional)
 
-ブランド表現やエンゲージメントが重要な場合に適用する。
+Apply when brand expression or engagement is important.
 
-- `references/m3-expressive.md` を参照する
-- 80/20ルール（80%標準、20%エクスプレッシブ）に従う
+- Refer to `references/m3-expressive.md`
+- Follow the 80/20 rule (80% standard, 20% expressive)
 
-### Workflow 2: 既存プロダクトからデザインシステムを抽出する
+### Workflow 2: Extract a Design System from an Existing Product
 
-既に動いているプロダクトからデザインシステムを後付けで構築する場合。
+When retroactively building a design system from a running product.
 
-#### 1. UIインベントリを実施する
+#### 1. Conduct a UI inventory
 
-既存画面からすべてのUI要素を収集・分類する。
+Collect and classify all UI elements from existing screens.
 
-- スクリーンショットの収集
-- 使用されている色、フォントサイズ、角丸、間隔の値をすべて列挙する
-- 不整合と重複を特定する
+- Collect screenshots
+- List all color, font size, corner radius, and spacing values in use
+- Identify inconsistencies and duplicates
 
-#### 2. トークンを標準化する
+#### 2. Standardize tokens
 
-散在する値をトークン体系に整理する。
+Organize scattered values into a token system.
 
-- `references/design-system-methodology.md` → トークンアーキテクチャ設計 を参照する
-- 類似する値を統合し、スケールに乗せる
-- セマンティックな命名を付与する
+- Refer to `references/design-system-methodology.md` → Token Architecture Design
+- Consolidate similar values and fit them into a scale
+- Assign semantic names
 
-#### 3. パターンを抽出する
+#### 3. Extract patterns
 
-- `references/design-system-methodology.md` → パターン体系化 を参照する
-- 同じ役割のUI要素を統合する
-- バリエーションを整理する
-- 命名規則を統一する
+- Refer to `references/design-system-methodology.md` → Pattern Organization
+- Consolidate UI elements with the same role
+- Organize variations
+- Unify naming conventions
 
-#### 4. アクセシビリティを監査する
+#### 4. Audit accessibility
 
-- `references/foundations.md` → Accessibility を参照する
-- カラーコントラスト、タッチターゲット、キーボード操作、スクリーンリーダー対応を確認する
+- Refer to `references/foundations.md` → Accessibility
+- Check color contrast, touch targets, keyboard operation, and screen reader support
 
-### Workflow 3: デザインシステムを拡張する
+### Workflow 3: Extend a Design System
 
-既存のデザインシステムに新しいパターンやトークンを追加する場合。
+When adding new patterns or tokens to an existing design system.
 
-#### 1. 必要性を確認する
+#### 1. Confirm necessity
 
-- 3つ以上の画面で使用されるか（再利用性）
-- 既存パターンで代替できないか
+- Will it be used in 3 or more screens? (reusability)
+- Can existing patterns substitute?
 
-#### 2. 原則に基づいて設計する
+#### 2. Design based on principles
 
-- `references/design-system-methodology.md` → コンポーネント設計原則 を参照する
-- 役割、状態、コンテナ、レスポンシブ、アクセシビリティの5観点で設計する
+- Refer to `references/design-system-methodology.md` → Component Design Principles
+- Design from 5 perspectives: role, state, container, responsive, accessibility
 
-#### 3. トークンマッピングを定義する
+#### 3. Define token mapping
 
-- 既存のSystem Tokensで表現できるか確認する
-- 新しいトークンが必要な場合は命名規則に従って追加する
+- Check if existing System Tokens can express the need
+- If new tokens are required, add them following naming conventions
 
-#### 4. ドキュメントを作成する
+#### 4. Create documentation
 
-- 目的、構造、バリエーション、使用ガイドラインを記述する
-- パターン間の関係（代替、構成、排他）を明記する
+- Describe purpose, structure, variations, and usage guidelines
+- Specify pattern relationships (alternative, compositional, exclusive)
 
-### Workflow 4: デザインレビューを行う
+### Workflow 4: Conduct a Design Review
 
-UIの品質をデザインシステムの観点から評価する場合。
+When evaluating UI quality from a design system perspective.
 
-#### 1. トークン準拠の確認
+#### 1. Check token compliance
 
-- すべての色、フォントサイズ、角丸、間隔がトークンに準拠しているか
-- ハードコードされた値がないか
+- Are all colors, font sizes, corner radii, and spacing values following tokens?
+- Are there hard-coded values?
 
-#### 2. パターン準拠の確認
+#### 2. Check pattern compliance
 
-- 定義済みパターンが正しく使われているか
-- 未定義のパターンが増えていないか
+- Are defined patterns used correctly?
+- Are undefined patterns proliferating?
 
-#### 3. 原則準拠の確認
+#### 3. Check principle compliance
 
-- 視覚的階層が明確か
-- 状態体系が完備されているか
-- アクセシビリティ要件を満たしているか
-- レスポンシブ対応がされているか
+- Is visual hierarchy clear?
+- Is the state system complete?
+- Are accessibility requirements met?
+- Is responsive adaptation in place?
 
-#### 4. 一貫性の確認
+#### 4. Check consistency
 
-- 同じ役割のコンポーネントが統一された表現を持っているか
-- トークンの使い方にブレがないか
+- Do components with the same role share unified expression?
+- Is token usage consistent?
 
-## 判断基準
+## Decision Guide
 
-### いつこのスキルを使うか
+### When to use this skill
 
-| 状況 | 参照すべきリファレンス |
-|------|---------------------|
-| デザインシステムを新規構築する | `design-system-methodology.md` → 全体 |
-| トークンを設計する | `design-system-methodology.md` → トークンアーキテクチャ + `styles.md` |
-| コンポーネントを設計する | `design-system-methodology.md` → コンポーネント設計原則 |
-| レイアウトを設計する | `foundations.md` → Layout |
-| アクセシビリティを確認する | `foundations.md` → Accessibility |
-| 表現を豊かにする | `m3-expressive.md` |
-| 既存UIを監査する | `design-system-methodology.md` → ガバナンスと進化 |
+| Situation | Reference to consult |
+|-----------|---------------------|
+| Build a new design system | `design-system-methodology.md` → entire document |
+| Design tokens | `design-system-methodology.md` → Token Architecture + `styles.md` |
+| Design components | `design-system-methodology.md` → Component Design Principles |
+| Design layout | `foundations.md` → Layout |
+| Check accessibility | `foundations.md` → Accessibility |
+| Enrich expression | `m3-expressive.md` |
+| Audit existing UI | `design-system-methodology.md` → Governance and Evolution |
 
-### Materialの既定コンポーネントについて
+### On Material's Predefined Components
 
-Materialが定義するコンポーネント（Button, FAB, Card等）は参考実装の一つであり、プロジェクトのデザインシステムにそのまま採用する必要はない。以下の方針で扱う。
+Material's predefined components (Button, FAB, Card, etc.) are one reference implementation and need not be adopted as-is in a project's design system. Follow these guidelines:
 
-- 原則を理解し、プロジェクトの文脈に合うコンポーネントを設計する
-- Materialの既定コンポーネントは設計の出発点やリファレンスとして参照してもよいが、最終的な設計はプロジェクトの要求に合わせる
-- コンポーネントの名前や構造はプロジェクトの用語体系に合わせる
+- Understand the principles and design components that fit the project's context
+- Material's predefined components may be referenced as a starting point, but final designs should match project requirements
+- Component names and structures should align with the project's terminology
