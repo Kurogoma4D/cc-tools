@@ -1,76 +1,97 @@
 ---
 name: material-thinking
-description: A methodology for building project-level design systems based on Material Design principles. Systematically covers design token architecture, component design principles, pattern organization, visual style definition, and expressive expression. Designs and builds design systems tailored to project requirements without depending on Material's predefined components.
+description: Build project-level design systems based on Material Design principles. Use when creating a new design system, extracting one from an existing product, extending tokens or components, or reviewing UI for design system compliance. Outputs a project-level Agent Skill with token definitions and component specifications.
 ---
 
 # Material Thinking
 
-Apply Material Design principles to build project-specific design systems.
+Build project-level design systems based on Material Design principles. Output a project-level Agent Skill (`.claude/skills/design-system/`) with design system documentation, token definitions, and component specifications.
 
 ## Premise
 
-The essence of Material is not a component library but design principles. Since context differs across projects, the surface layer (component appearance and behavior) must be customized. This skill applies Material principles as methodology to build project-level design systems.
+Material's essence is design principles, not a component library. This skill applies Material principles as methodology to:
+
+1. Define brand identity (semantic + perceptual layers)
+2. Translate brand into design tokens with documented rationale
+3. Design component patterns following project requirements
+4. Output an installable Agent Skill for the project
+
+A design system is not a style guide. The difference is documenting **why each value was chosen** — connecting semantic brand traits to concrete token values.
 
 ## References
 
-### 1. Design System Methodology (`references/design-system-methodology.md`)
+### 1. Brand Identity
 
-Methodology for designing, building, and operating design systems. Refer to when:
+Methodology for defining brand identity and translating it to design system elements: semantic elements (personality, voice & tone, values, relationship), perceptual elements (color, typography, spacing, shape, icons, motion), and the translation matrix between them.
 
-- Designing token architecture (Reference → System → Component)
-- Applying component design principles (role-based design, state systems, container thinking)
-- Extracting and organizing patterns
-- Governing and extending design systems
+- For full details, see [brand-identity.md](references/brand-identity.md)
+- Refer to when defining brand, mapping semantic traits to perceptual elements, or documenting design rationale
 
-### 2. Foundations (`references/foundations.md`)
+### 2. Design System Methodology
 
-Material's foundational principles applied to all UIs. Refer to when:
+Methodology for designing, building, and operating design systems: 5-layer structure, 3-tier token architecture (Reference → System → Component), component design principles, pattern organization, governance.
 
-- Checking accessibility requirements
-- Designing layout and responsive behavior (window size classes, canonical layouts)
-- Defining interaction patterns (states, gestures, selection)
-- Writing content design and UX copy
+- For full details, see [design-system-methodology.md](references/design-system-methodology.md)
+- Refer to when designing token architecture, applying component principles, organizing patterns, or governing the system
 
-### 3. Visual Styles (`references/styles.md`)
+### 3. Foundations
 
-Elements that compose the visual language. Refer to when:
+Material's foundational principles: accessibility, layout (window size classes, canonical layouts), interaction (states, gestures, selection), content design, adaptive design.
 
-- Designing color systems (tonal palettes, color roles, dynamic color)
-- Defining typography (type scale, fonts)
-- Working with elevation and shape
-- Selecting icons and designing motion
+- For full details, see [foundations.md](references/foundations.md)
+- Refer to when checking accessibility, designing layout/responsive behavior, defining interaction patterns, or writing UX copy
 
-### 4. Expressive Expression (`references/m3-expressive.md`)
+### 4. Visual Styles
 
-Techniques for creating more expressive UIs. Refer to when:
+Visual language elements: color system (tonal palettes, color roles, dynamic color), typography (type scale, fonts), elevation, shape, icons, motion.
 
-- Applying expressive motion
-- Implementing shape morphing
-- Enhancing brand expression
-- Balancing expressiveness with usability
+- For full details, see [styles.md](references/styles.md)
+- Refer to when designing color systems, defining typography, working with elevation/shape, or designing motion
+
+### 5. Expressive Expression
+
+Techniques for creating more expressive UIs: emphasized easing, extended duration, exaggerated scale, dynamic color, layered motion, shape morphing. Includes the 80/20 rule and accessibility considerations.
+
+- For full details, see [m3-expressive.md](references/m3-expressive.md)
+- Refer to when enhancing brand expression or balancing expressiveness with usability
 
 ## Workflows
 
 ### Workflow 1: Build a New Project Design System
 
-When building a design system from scratch for a new project.
+Full workflow from brand definition to Agent Skill output.
 
-#### 1. Define design principles
+#### 1. Define brand identity
 
-Establish project-specific design principles. Customize Material's principles (visual hierarchy, affordance, feedback, consistency, accessibility) to match the project's purpose and brand.
+Establish the semantic foundation that drives all design decisions.
 
-- Refer to `references/foundations.md`
-- Refer to `references/design-system-methodology.md` → Layer 1
+- Refer to [brand-identity.md](references/brand-identity.md) → Semantic Elements
 
-#### 2. Design token architecture
+Define:
+- 3-5 brand personality traits with boundaries
+- Voice & tone dimensions and default/variation rules
+- Values and mission
+- Relationship archetype with target users
 
-Convert the brand's visual identity into design tokens.
+#### 2. Map brand to perceptual elements
 
-- Refer to `references/design-system-methodology.md` → Token Architecture Design
-- Refer to `references/styles.md` → each section
+Translate semantic traits into perceptual design directions.
 
-Summary of steps:
+- Refer to [brand-identity.md](references/brand-identity.md) → Translation: Semantic to Perceptual
 
+Create:
+- Translation matrix (trait × perceptual element)
+- Translation rules with rationale for key decisions
+- Conflict resolution hierarchy
+
+#### 3. Design token architecture
+
+Convert perceptual directions into concrete token values.
+
+- Refer to [design-system-methodology.md](references/design-system-methodology.md) → Token Architecture Design
+- Refer to [styles.md](references/styles.md) → each section
+
+Steps:
 1. Define Reference Tokens as raw values (color palette, font sizes, etc.)
 2. Map to System Tokens with semantic names (primary, surface, etc.)
 3. Define light and dark themes
@@ -78,65 +99,84 @@ Summary of steps:
 5. Define shape scale (corner radius steps)
 6. Define spacing scale (4dp base)
 7. Define motion tokens (duration, easing)
+8. Document semantic rationale for each System Token
 
-#### 3. Design component patterns
+#### 4. Design component patterns
 
-Design UI patterns based on project requirements. Do not assume Material's predefined components.
+Design UI patterns based on project requirements.
 
-- Refer to `references/design-system-methodology.md` → Component Design Principles
+- Refer to [design-system-methodology.md](references/design-system-methodology.md) → Component Design Principles
+- Refer to [foundations.md](references/foundations.md)
 
-Define the following for each pattern:
-
+For each pattern, define:
 - Role and emphasis level
 - State system (default, hover, focused, pressed, disabled)
 - Container structure (background, boundary, padding, content slots)
 - Responsive adaptation rules
 - Accessibility requirements
+- Token mapping with rationale
 
-#### 4. Organize patterns
+#### 5. Organize patterns
 
-Categorize designed patterns and define relationships between them.
+Categorize patterns and define relationships.
 
-- Refer to `references/design-system-methodology.md` → Pattern Organization
+- Refer to [design-system-methodology.md](references/design-system-methodology.md) → Pattern Organization
 
-#### 5. Consider expressive expression (optional)
+#### 6. Consider expressive expression (optional)
 
 Apply when brand expression or engagement is important.
 
-- Refer to `references/m3-expressive.md`
+- Refer to [m3-expressive.md](references/m3-expressive.md)
 - Follow the 80/20 rule (80% standard, 20% expressive)
 
-### Workflow 2: Extract a Design System from an Existing Product
+#### 7. Generate output
+
+Produce the project-level Agent Skill (`.claude/skills/design-system/SKILL.md`). Implement tokens and components directly in the project's codebase. See [Output Format](#output-format) below.
+
+### Workflow 2: Extract Design System from Existing Product
 
 When retroactively building a design system from a running product.
 
-#### 1. Conduct a UI inventory
-
-Collect and classify all UI elements from existing screens.
+#### 1. Conduct UI inventory
 
 - Collect screenshots
 - List all color, font size, corner radius, and spacing values in use
 - Identify inconsistencies and duplicates
 
-#### 2. Standardize tokens
+#### 2. Infer brand identity
 
-Organize scattered values into a token system.
+Reverse-engineer brand identity from existing design decisions.
 
-- Refer to `references/design-system-methodology.md` → Token Architecture Design
-- Consolidate similar values and fit them into a scale
+- Refer to [brand-identity.md](references/brand-identity.md) → Semantic Elements
+- Identify implicit personality traits from current design
+- Document voice & tone patterns in existing copy
+- Define the relationship archetype the current UI suggests
+- Document gaps where semantic intent is unclear
+
+#### 3. Standardize tokens
+
+Organize scattered values into a token system with semantic rationale.
+
+- Refer to [design-system-methodology.md](references/design-system-methodology.md) → Token Architecture Design
+- Consolidate similar values and fit into a scale
 - Assign semantic names
+- Document rationale connecting tokens to inferred brand identity
 
-#### 3. Extract patterns
+#### 4. Extract patterns
 
-- Refer to `references/design-system-methodology.md` → Pattern Organization
+- Refer to [design-system-methodology.md](references/design-system-methodology.md) → Pattern Organization
 - Consolidate UI elements with the same role
 - Organize variations
 - Unify naming conventions
 
-#### 4. Audit accessibility
+#### 5. Audit accessibility
 
-- Refer to `references/foundations.md` → Accessibility
-- Check color contrast, touch targets, keyboard operation, and screen reader support
+- Refer to [foundations.md](references/foundations.md) → Accessibility
+- Check color contrast, touch targets, keyboard operation, screen reader support
+
+#### 6. Generate output
+
+Produce the project-level Agent Skill (`.claude/skills/design-system/SKILL.md`). Implement tokens and components directly in the project's codebase. See [Output Format](#output-format) below.
 
 ### Workflow 3: Extend a Design System
 
@@ -149,63 +189,149 @@ When adding new patterns or tokens to an existing design system.
 
 #### 2. Design based on principles
 
-- Refer to `references/design-system-methodology.md` → Component Design Principles
+- Refer to [design-system-methodology.md](references/design-system-methodology.md) → Component Design Principles
 - Design from 5 perspectives: role, state, container, responsive, accessibility
 
 #### 3. Define token mapping
 
 - Check if existing System Tokens can express the need
-- If new tokens are required, add them following naming conventions
+- If new tokens are required, add following naming conventions
+- Document semantic rationale for new tokens
 
-#### 4. Create documentation
+#### 4. Update documentation
 
-- Describe purpose, structure, variations, and usage guidelines
+- Update the Agent Skill only if new design concepts or principles are introduced
+- Implement tokens and components directly in the codebase (SSoT)
 - Specify pattern relationships (alternative, compositional, exclusive)
 
 ### Workflow 4: Conduct a Design Review
 
 When evaluating UI quality from a design system perspective.
 
-#### 1. Check token compliance
+#### 1. Check brand alignment
 
-- Are all colors, font sizes, corner radii, and spacing values following tokens?
+- Do design decisions reflect documented brand personality?
+- Is the translation matrix being followed?
+- Are there perceptual elements without semantic rationale?
+
+#### 2. Check token compliance
+
+- Are all colors, font sizes, corner radii, and spacing following tokens?
 - Are there hard-coded values?
 
-#### 2. Check pattern compliance
+#### 3. Check pattern compliance
 
 - Are defined patterns used correctly?
 - Are undefined patterns proliferating?
 
-#### 3. Check principle compliance
+#### 4. Check principle compliance
 
 - Is visual hierarchy clear?
 - Is the state system complete?
 - Are accessibility requirements met?
 - Is responsive adaptation in place?
 
-#### 4. Check consistency
+#### 5. Check consistency
 
 - Do components with the same role share unified expression?
 - Is token usage consistent?
 
-## Decision Guide
+## Output Format
 
-### When to use this skill
+This skill produces a project-level Agent Skill. Token definitions and component implementations in the codebase are the Single Source of Truth (SSoT) — the generated skill documents brand identity, design principles, and translation rationale, then references the implementation.
+
+### File Structure
+
+```
+.claude/skills/design-system/
+└── SKILL.md              # Design system Agent Skill (auto-loaded by Claude)
+```
+
+Token definitions and components live in the project's own codebase (CSS variables, Tailwind config, theme files, component source, etc.). The Agent Skill references them but does not duplicate them.
+
+### Generated SKILL.md
+
+The generated `SKILL.md` is an Agent Skill with proper frontmatter. Claude auto-loads it when working on the project, applying the design system as context.
+
+```markdown
+---
+name: design-system
+description: "[Project name] design system. Defines brand identity, design principles, and translation rationale. Use when building UI, reviewing designs, or making visual decisions."
+user-invocable: false
+---
+
+# [Project Name] Design System
+
+## Brand Identity
+
+### Personality
+- [Trait 1]: [definition] / Not: [boundary]
+- [Trait 2]: [definition] / Not: [boundary]
+- [Trait 3]: [definition] / Not: [boundary]
+
+### Voice & Tone
+- Default: [description]
+- Error: [variation]
+- Success: [variation]
+- Onboarding: [variation]
+
+### Relationship: [archetype]
+[Description of product-user dynamic]
+
+## Translation Matrix
+
+| Trait | Color | Typography | Shape | Spacing | Motion |
+|-------|-------|------------|-------|---------|--------|
+| ... | ... | ... | ... | ... | ... |
+
+## Token Architecture
+
+Implementation is SSoT. Refer to:
+- [path to token implementation file(s)]
+
+### Key Translation Rules
+For each system-level token, document the semantic rationale:
+
+- `--color-primary`: [trait] — [rationale]
+- `--shape-medium`: [trait] — [rationale]
+- ...
+
+These rules apply when introducing new tokens or reviewing existing ones.
+Existing implementation takes precedence unless it contradicts a principle documented here.
+
+## Patterns
+
+### Pattern Catalog
+[Pattern names, roles, and relationships (alternative, compositional, exclusive)]
+
+### Principles for New Patterns
+When adding new patterns, follow:
+- Role-based design (define by role, not appearance)
+- Explicit state system (default, hover, focused, pressed, disabled)
+- Container thinking (background, boundary, padding, content slots)
+- Responsive adaptation (reflow, resize, show/hide, transform)
+- Accessibility first (48×48dp touch target, WCAG AA contrast, keyboard, screen reader)
+
+Implementation in the codebase is SSoT for existing patterns.
+This section governs decisions when creating or modifying patterns.
+```
+
+### SSoT Principle
+
+- Token values and component implementations in the codebase are always authoritative
+- The Agent Skill documents **why** (brand identity, translation rationale, design principles), not **what** (concrete values)
+- The Agent Skill is updated only when introducing new design concepts, correcting principle violations, or revising brand identity
+
+## Decision Guide
 
 | Situation | Reference to consult |
 |-----------|---------------------|
-| Build a new design system | `design-system-methodology.md` → entire document |
-| Design tokens | `design-system-methodology.md` → Token Architecture + `styles.md` |
-| Design components | `design-system-methodology.md` → Component Design Principles |
-| Design layout | `foundations.md` → Layout |
-| Check accessibility | `foundations.md` → Accessibility |
-| Enrich expression | `m3-expressive.md` |
-| Audit existing UI | `design-system-methodology.md` → Governance and Evolution |
-
-### On Material's Predefined Components
-
-Material's predefined components (Button, FAB, Card, etc.) are one reference implementation and need not be adopted as-is in a project's design system. Follow these guidelines:
-
-- Understand the principles and design components that fit the project's context
-- Material's predefined components may be referenced as a starting point, but final designs should match project requirements
-- Component names and structures should align with the project's terminology
+| Define brand identity | [brand-identity.md](references/brand-identity.md) |
+| Translate brand to design | [brand-identity.md](references/brand-identity.md) → Translation |
+| Build a new design system | All references in workflow order |
+| Design tokens | [design-system-methodology.md](references/design-system-methodology.md) → Token Architecture + [styles.md](references/styles.md) |
+| Design components | [design-system-methodology.md](references/design-system-methodology.md) → Component Design Principles |
+| Design layout | [foundations.md](references/foundations.md) → Layout |
+| Check accessibility | [foundations.md](references/foundations.md) → Accessibility |
+| Enrich expression | [m3-expressive.md](references/m3-expressive.md) |
+| Audit existing UI | [design-system-methodology.md](references/design-system-methodology.md) → Governance + [brand-identity.md](references/brand-identity.md) |

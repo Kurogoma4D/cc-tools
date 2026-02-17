@@ -14,9 +14,36 @@ A methodology for designing and building project-specific design systems based o
 
 ## Design System Layer Structure
 
-A design system consists of four layers. Lower layers are more stable; upper layers carry stronger project-specific expression.
+A design system consists of five layers. Lower layers are more stable; upper layers carry stronger project-specific expression.
 
-### Layer 1: Principles
+### Layer 1: Brand Identity
+
+The foundation that gives the design system its character. Composed of two sub-layers.
+
+**Semantic elements** — what users feel and interpret:
+- Brand personality (3-5 traits with boundaries)
+- Voice & tone (formality, humor, directness, enthusiasm)
+- Values and mission
+- Relationship archetype with target users (equal partner, expert advisor, friendly assistant, professional tool)
+
+**Perceptual elements** — what users see and touch:
+- Color palette (primary, secondary, accent, neutral)
+- Typography (typeface selection, weight distribution)
+- Spacing and rhythm (density, regularity)
+- Shape language (corner radius, organic vs geometric)
+- Iconography style (line weight, fill, metaphor)
+- Motion (speed, easing character, amplitude)
+- Photography / illustration tone
+- Sound / haptic feedback (if applicable)
+
+**Translation points** — the connection between semantic and perceptual:
+- Each perceptual decision must trace back to a semantic trait
+- Document "why this value" for every System Token
+- This layer distinguishes a design system from a style guide
+
+See `references/brand-identity.md` for detailed methodology.
+
+### Layer 2: Principles
 
 Unchanging design philosophy. Applied across projects.
 
@@ -26,26 +53,27 @@ Unchanging design philosophy. Applied across projects.
 - Consistency: Use the same expression for the same meaning
 - Accessibility: Enable use by people with diverse abilities
 
-### Layer 2: Design Tokens
+### Layer 3: Design Tokens
 
-Convert principles into project-specific values. Numeric systems for color, shape, spacing, and motion.
+Convert brand identity and principles into project-specific values. Numeric systems for color, shape, spacing, and motion.
 
 - Derive color schemes from brand colors
 - Define typography scales
 - Define shape (corner radius) scales
 - Define spacing scales
 - Define motion (easing, duration) values
+- Document semantic rationale for each System Token
 
-### Layer 3: Component Patterns
+### Layer 4: Component Patterns
 
-Reusable UI patterns built with tokens. Design them to match project requirements, not bound by Material's predefined components.
+Reusable UI patterns built with tokens. Design them to match project requirements.
 
 - Action patterns: buttons, toggles, inputs
 - Information display patterns: cards, lists, status displays
 - Navigation patterns: screen transitions, tabs, hierarchy traversal
 - Feedback patterns: notifications, confirmations, progress
 
-### Layer 4: Compositions
+### Layer 5: Compositions
 
 Concrete screen layouts combining patterns. Directly tied to project use cases.
 
@@ -93,6 +121,25 @@ card-bg: {color-surface}
 card-radius: {shape-medium}
 ```
 
+### Semantic Rationale Documentation
+
+Every System Token should carry its semantic rationale. This connects Layer 1 (Brand Identity) to Layer 3 (Design Tokens).
+
+**Format for each token:**
+1. The value: concrete value (e.g., `12px`)
+2. Semantic source: which brand trait drives it (e.g., "Approachable")
+3. Rationale: why this value expresses that trait
+4. Boundary: when to deviate and why
+
+**Example:**
+```
+Token: shape-medium = 12px
+Semantic source: "Approachable" personality
+Rationale: Rounded corners feel friendly and welcoming,
+  while maintaining enough structure for credibility
+Boundary: Error states use shape-small (4px) to convey seriousness
+```
+
 ### Color Token Design Steps
 
 1. Set brand colors as source colors
@@ -100,19 +147,22 @@ card-radius: {shape-medium}
 3. Assign tones to roles (primary, secondary, tertiary, surface, error)
 4. Define both light and dark themes
 5. Add semantic colors (success, warning, info)
+6. Document semantic rationale for primary, secondary, and tertiary selections
 
 ### Typography Token Design Steps
 
-1. Select the project's brand font
+1. Select the project's brand font based on brand personality
 2. Define usage roles (display, headline, title, body, label)
 3. Set size, weight, line height, and letter spacing for each role
 4. Establish responsive scaling rules
+5. Document how typeface and weight choices reflect brand personality
 
 ### Shape Token Design Steps
 
 1. Define a shape scale matching the brand's character (corner radius steps)
 2. Establish rules for assigning shapes based on element size and importance
 3. Clarify shape semantics (e.g., larger corner radius = friendlier)
+4. Document the connection between shape language and brand personality
 
 ### Spacing Token Design Steps
 
@@ -131,7 +181,7 @@ card-radius: {shape-medium}
 
 ## Component Design Principles
 
-Rather than using Material's predefined components as-is, design project-specific components following these principles.
+Design project-specific components following these principles.
 
 ### Principle 1: Role-Based Design
 
