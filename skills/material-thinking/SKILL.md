@@ -89,7 +89,7 @@ Create:
 Convert perceptual directions into concrete token values.
 
 - Refer to [design-system-methodology.md](references/design-system-methodology.md) → Token Architecture Design
-- Refer to [styles.md](references/styles.md) → each section
+- Refer to [styles.md](references/styles.md) → each section (token design phase only — do not carry M3 component names into later steps)
 
 Steps:
 1. Define Reference Tokens as raw values (color palette, font sizes, etc.)
@@ -103,12 +103,21 @@ Steps:
 
 #### 4. Design component patterns
 
-Design UI patterns based on project requirements.
+Discover UI patterns from project requirements. **Do NOT start from an existing component catalog (e.g., Material's component library). Derive patterns from the project's user flows.**
 
 - Refer to [design-system-methodology.md](references/design-system-methodology.md) → Component Design Principles
 - Refer to [foundations.md](references/foundations.md)
+- Do NOT refer to [styles.md](references/styles.md) during component design — styles.md is for token design only
 
-For each pattern, define:
+##### Component Discovery Process
+
+1. List the project's primary user flows
+2. For each flow, identify what UI **roles** are needed (e.g., "prompt the user to take the next step", "let the user filter a dataset", "show a summary of an item")
+3. Consolidate identical roles across flows into a single pattern
+4. Name each pattern after its project-specific role, not after a standard UI library name (e.g., "recipe-card" instead of "card", "search-trigger" instead of "FAB")
+
+##### For each pattern, define
+
 - Role and emphasis level
 - State system (default, hover, focused, pressed, disabled)
 - Container structure (background, boundary, padding, content slots)

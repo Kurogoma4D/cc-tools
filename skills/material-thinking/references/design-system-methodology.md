@@ -68,10 +68,12 @@ Convert brand identity and principles into project-specific values. Numeric syst
 
 Reusable UI patterns built with tokens. Design them to match project requirements.
 
-- Action patterns: buttons, toggles, inputs
-- Information display patterns: cards, lists, status displays
-- Navigation patterns: screen transitions, tabs, hierarchy traversal
-- Feedback patterns: notifications, confirmations, progress
+- Action patterns: primary action triggers, state toggles, data entry fields
+- Information display patterns: content containers, item collections, status indicators
+- Navigation patterns: destination selectors, hierarchy traversal, context switches
+- Feedback patterns: system messages, confirmations, progress indicators
+
+Name patterns after their **role in the project**, not after existing UI library components.
 
 ### Layer 5: Compositions
 
@@ -198,9 +200,9 @@ Organize component emphasis into three levels:
 
 | Emphasis | Visual Characteristics | Usage |
 |----------|----------------------|-------|
-| High | Filled, high contrast | Primary action on screen |
-| Medium | Outlined, mid-tone | Secondary actions |
-| Low | Text only, low contrast | Tertiary actions |
+| High | Strong background, high contrast | Primary action on screen |
+| Medium | Border or subtle background, mid-tone | Secondary actions |
+| Low | Minimal visual weight, low contrast | Tertiary actions |
 
 ### Principle 2: Explicit States
 
@@ -215,14 +217,16 @@ Define a state system for every interactive element.
 
 **State Layer Implementation**
 
-Express states through semi-transparent overlays. This applies unified state expression to components on any background color.
+Express states through semi-transparent overlays. This applies unified state expression to components on any background color. Define opacity values as project tokens.
 
 ```
-Hover: primary color at 8% opacity
-Focus: primary color at 12% opacity
-Press: primary color at 12% opacity
-Drag: primary color at 16% opacity
+Hover: primary color at {state-hover-opacity}
+Focus: primary color at {state-focus-opacity}
+Press: primary color at {state-press-opacity}
+Drag: primary color at {state-drag-opacity}
 ```
+
+Choose opacity values that match the project's brand expression — bolder brands may use higher values, subtle brands lower.
 
 ### Principle 3: Container Thinking
 
@@ -313,11 +317,13 @@ Select navigation patterns based on screen size and content structure.
 
 **Considerations by window size:**
 
-| Size | Patterns to consider |
-|------|---------------------|
-| Compact (<600dp) | Bottom navigation, tabs |
-| Medium (600-840dp) | Side rail, collapsible panel |
-| Expanded (>840dp) | Side drawer, multi-pane |
+| Size | Pattern roles to consider |
+|------|--------------------------|
+| Compact (<600dp) | Persistent destination selector, content category switcher |
+| Medium (600-840dp) | Collapsible destination panel, icon-based destination selector |
+| Expanded (>840dp) | Always-visible destination panel, multi-pane layout |
+
+Name navigation patterns after their role in the project, not after existing library components.
 
 ### Layout System Design
 
