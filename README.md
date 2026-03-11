@@ -28,6 +28,41 @@ Claude Codeの設定ファイルと便利なフックスクリプトを含んで
 
 ## 含まれているツール
 
+### GitHub Workflow
+
+#### auto-issue-worker skill
+GitHub Issueを自動で順次処理するパイプラインスキルです。
+- 最も古いオープンIssueから順に取得・実装・レビュー・マージを自動実行
+- issue-implementer / code-reviewer エージェントと連携
+- `/auto-issue-worker` で起動
+
+#### code-reviewer agent
+PRのコードレビューを自動実行するエージェントです。
+- PR diffの取得・分析
+- 正確性、バグ、設計、UI一貫性、テスト、セキュリティ、パフォーマンスの観点でレビュー
+- 問題がなければ「LGTM」、あれば重要度付きの指摘リストを返却
+
+#### issue-implementer (github-issue-implementer) agent
+GitHub Issue番号を指定して、実装からPR作成までを自動化するエージェントです。
+- Worktree作成 → Issue分析 → 実装 → 品質チェック → PR作成 → Worktree削除
+- 一連のワークフローを自律的に実行
+
+#### セットアップ
+
+code-reviewer / issue-implementer / auto-issue-worker はプロジェクト固有の情報をプレースホルダー (`{{REPO_OWNER_NAME}}` 等) で保持しています。セットアップスクリプトで対話的に置換・インストールできます。
+
+リポジトリをcloneせずにリモート実行する場合は以下のとおりです。
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/Kurogoma4D/cc-tools/main/setup-github-workflow.sh)
+```
+
+ローカル実行やインストール先の変更も可能です。
+
+```bash
+./setup-github-workflow.sh /path/to/project/.claude
+```
+
 ### Skills
 
 #### material-thinking
